@@ -40,11 +40,9 @@ for SCANNER in [SCANNER_LIST[0]]:#tqdm(SCANNER_LIST):
         # strip brain with robex algorithm
         stripped_t1, mask = robex(image_T1_pre)
 
-        os.makedirs(SAVE_PATH +im_dir+'/'+ NUM, exist_ok=True)
-        np.save(os.path.join(SAVE_PATH, im_dir, NUM, f'strip_brain_t1.npy'), stripped_t1.numpy())
-        np.save(os.path.join(SAVE_PATH, mask, NUM, f'strip_brain_t1_mask.npy'), mask.numpy())
+        os.makedirs(SAVE_PATH+im_dir+'/'+ NUM, exist_ok=True)
+        os.makedirs(SAVE_PATH+mask_dir+'/'+ NUM, exist_ok=True)
+        np.save(os.path.join(SAVE_PATH, im_dir, NUM, f'strip_brain_t1.npy'), stripped_t1.get_fdata())
+        np.save(os.path.join(SAVE_PATH, mask_dir, NUM, f'strip_brain_t1_mask.npy'), mask.get_fdata())
 
         print('[INFO] Brains extracted with success.')
-
-
-
